@@ -1,14 +1,27 @@
 'use strict';
 
-angular.module('myNewProject', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router'])
-  .config(function ($stateProvider, $urlRouterProvider) {
-    $stateProvider
-      .state('home', {
-        url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
-      });
+angular.module( 'ngBoilerplate', [
+  // 'templates-app',
+  // 'templates-common',
+  'ngBoilerplate.home',
+  // 'ngBoilerplate.about',
+  // 'ngBoilerplate.test',
+  'ui.router'
+])
 
-    $urlRouterProvider.otherwise('/');
-  })
+.config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
+  $urlRouterProvider.otherwise( '/home' );
+})
+
+.run( function run () {
+})
+
+.controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
+  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+    if ( angular.isDefined( toState.data.pageTitle ) ) {
+      $scope.pageTitle = toState.data.pageTitle + ' | ngBoilerplate' ;
+    }
+  });
+})
+
 ;

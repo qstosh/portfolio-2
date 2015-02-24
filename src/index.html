@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" ng-app="myNewProject">
+<html class="no-js" ng-app="ngBoilerplate" ng-controller="AppCtrl">
   <head>
     <meta charset="utf-8">
     <title>myNewProject</title>
@@ -14,22 +14,35 @@
     <!-- endinject -->
     <!-- endbuild -->
   </head>
-  <body>
-    <!--[if lt IE 10]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <div ui-view></div>
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
+  <body class="Body" ng-class="{'Body--nav-mode-on':hovering}">
+    <main class="Main" ng-class="{'Main--nav-mode-on':hovering}">
+      <wrapper class="Main__wrapper" ui-view="main"></wrapper>
+    </main>
+    <nav class="Nav" role="navigation" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false" ng-class="{'Nav--nav-mode-on':hovering}">
+      <div class="test"></div>
+      <a class="Nav__item" ng-class="{'Nav--nav-mode-on__item':hovering}" ui-sref="home" ui-sref-active="Nav__item--active">
+        <span title="Home">Home</span>
+      </a>
+      <a class="Nav__item" ng-class="{'Nav--nav-mode-on__item':hovering}" ui-sref="about" ui-sref-active="Nav__item--active">
+        <span title="About">About</span>
+      </a>
+      <a class="Nav__item" ng-class="{'Nav--nav-mode-on__item':hovering}" ui-sref="test" ui-sref-active="Nav__item--active">
+        <span title="Test">Test</span>
+      </a>
+      <a class="Nav__item" ng-class="{'Nav--nav-mode-on__item':hovering}">
+        <span title="Orange">Orange</span>
+      </a>
+      <a class="Nav__item" ng-class="{'Nav--nav-mode-on__item':hovering}">
+        <span title="Banana">Banana</span>
+      </a>
+      <a class="Nav__item" ng-class="{'Nav--nav-mode-on__item':hovering}">
+        <span title="Avocado">Avocado</span>
+      </a>
+      <a class="Nav__item" ng-class="{'Nav--nav-mode-on__item':hovering}">
+        <span title="Apples">Apples</span>
+      </a>
+    </nav>
+    <footer></footer>
 
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
@@ -46,6 +59,5 @@
     <!-- angular templates will be automatically converted in js and inserted here -->
     <!-- endinject -->
     <!-- endbuild -->
-
   </body>
 </html>
